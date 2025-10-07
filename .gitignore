@@ -22,3 +22,10 @@ Thumbs.db
 .coverage
 .tox/
 .eggs/
+
+
+#vscode
+
+.vscode/
+node_modules/
+*.log
