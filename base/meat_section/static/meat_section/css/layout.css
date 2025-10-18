@@ -1,0 +1,33 @@
+* {
+    margin: auto;
+}
+
+header{
+    display: flex;
+    flex-flow: row, nowrap;
+    justify-content: space-between;
+}
+nav>a {
+    margin: 10px;
+}
+table{
+    margin-top: 30px;
+}
+
+footer{
+    display: flex;
+    margin-top:30px;
+}
+body{
+    max-width: 700px;
+}
+
+td{
+    padding: 5px;
+}
+.title{
+    display: flex;
+    font-size: 20px;
+    margin-top: 50px;
+  
+}

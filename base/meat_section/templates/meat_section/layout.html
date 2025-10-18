@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Мій сайт{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'meat_section/css/layout.css' %}">
+</head>
+<body>
+    <header>
+        <h1>meat_section app</h1>
+        <nav>
+            {% block nav %}
+                <a href="{% url 'section_view' %}">Sections</a>
+                <a href="{% url 'product_view' %}">Products</a>
+            {% endblock %}
+        </nav>
+    </header>
+
+    <main>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025</p>
+    </footer>
+</body>
+</html>
