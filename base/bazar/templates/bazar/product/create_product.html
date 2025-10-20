@@ -1,0 +1,29 @@
+{% extends "bazar/layout.html" %}
+{% load static %}
+
+{% block title %}Додати запис до таблиці Продукти{% endblock %}
+
+{% block content %}
+<div class="title">
+    <p>Add record to table Product</p>
+</div>
+<div class="content">
+    <div class="form">
+        <form method="post">
+            {% csrf_token %}
+            <p>Name:</p>
+            {{form.title}}
+            <p>Price:</p>
+            {{form.price}}
+            <p>Quantity:</p>
+            {{form.product_qty}}
+            <p>Category:</p>
+            {{form.category}}
+            <p>Section:</p>
+            {{form.section_located}}
+            <button>Add record</button>
+        </form>
+    </div>
+    <div class="return_to_table"><a href="{% url 'section_view' %}">Back to Sections</a></div>
+</div>
+{% endblock%}

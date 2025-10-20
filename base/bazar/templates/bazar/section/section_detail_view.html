@@ -1,0 +1,36 @@
+{% extends "bazar/layout.html" %}
+{% load static %}
+
+{% block title %}Section Detail View{% endblock %}
+
+{% block content %}
+<div>
+    <div class="detail_block">
+        <div class="title">{{ section.title }}</div>
+        <div class="category">Position: {{ section.position }}</div>
+        <div class="license">
+            Sale License Required:
+            {% if section.is_required_sale_license %}
+            <span class="badge bg-success">Yes</span>
+            {% else %}
+            <span class="badge bg-secondary">No</span>
+            {% endif %}
+        </div>
+        <div class="open_time">Opening Time: {{ section.open_time }}</div>
+        <div class="close_time">Closing Time: {{ section.close_time }}</div>
+
+        <div class="desc_title">Description:</div>
+        <div class="desc">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, qui, pariatur tempora itaque perferendis
+            dignissimos fugit beatae ullam minus laborum eveniet adipisci eius enim, quo architecto? Quae rem provident
+            cumque!
+        </div>
+
+        <div class="manage_buttons">
+            <a href="{% url 'section_update' section.slug %}"><button>Update</button></a>
+            <a href="{% url 'section_delete' section.slug %}"><button>Delete</button></a>
+        </div>
+        <div class="return_to_table"><a href="{% url 'section_view' %}">Back to sections</a></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,147 @@
+* {
+    margin: auto;
+    color: rgba(66, 69, 81, 1);
+}
+
+header{
+    display: flex;
+    flex-flow: row, nowrap;
+    justify-content: space-between;
+}
+nav>a {
+    margin: 10px;
+}
+table{
+    margin-top: 30px;
+}
+
+footer{
+    display: flex;
+    margin-top:30px;
+}
+body{
+    max-width: 700px;
+}
+
+td, th{
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+       
+}
+
+td:first-child{
+    text-align: left;
+}
+
+.title{
+    display: flex;
+    font-size: 20px;
+    margin-top: 50px;
+  
+}
+
+.pag{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: auto;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.pag * {
+    margin: 0;
+}
+
+footer{
+    margin-bottom: 20px;
+}
+
+.manage_nav{
+    position: relative;
+    top: 50px;
+    left: 20px;
+    font-size: 16px;
+    list-style-type:disc;
+    
+}
+
+.form{
+    width: 230px;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+
+}
+
+.form form >  p {
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.form input, .form select, .form button{
+    padding:5px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form button{
+    margin-top: 15px;
+}
+
+.form input[type="checkbox"]{
+    display: inline;
+    align-items: center;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 0px;
+    margin-top: 2px;
+}
+
+.form form > div{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    
+}
+
+.form form div p {
+    margin: 0;
+    display: block;
+}
+
+
+.detail_block .title{
+    font-size: 32px;
+    padding-bottom: 20px;
+}
+
+.detail_block > div{
+    padding: 5px;
+    border: 1px solid black;  
+}
+
+.return_to_table{
+    text-align: center;
+    margin-top: 15px;
+    border:none !important;
+}
+
+.message_box{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 400px;
+}
+
+.message_box> p{
+    display: block;
+    margin:auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    
+}

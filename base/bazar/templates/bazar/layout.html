@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>{% block title %}Мій сайт{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'meat_section/css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'bazar/css/layout.css' %}">
 </head>
 <body>
     <header>
-        <h1>meat_section app</h1>
+        <h1>bazar app :)</h1>
         <nav>
             {% block nav %}
                 <a href="{% url 'section_view' %}">Sections</a>
@@ -24,7 +24,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025</p>
+        <p>Pogrebnyuk &copy;2025</p>
     </footer>
 </body>
 </html>

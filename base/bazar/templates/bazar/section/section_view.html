@@ -1,0 +1,52 @@
+{% extends "bazar/layout.html" %}
+{% load static %}
+
+{% block title %}Список секцій{% endblock %}
+
+{% block content %}
+<nav class="manage_nav">
+    <a href="{% url 'section_create' %}">Create record</a>
+</nav>
+<div class="title">
+    <p>Sections</p>
+</div>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Open time</th>
+        <th>Close time</th>
+    </tr>
+    {% for section in sections %}
+    <tr>
+        <td>{{ section.title }}</td>
+        <td>{{ section.open_time }}</td>
+        <td>{{ section.close_time }}</td>
+        <td>
+            <a href="{% url 'section_detail' section.slug %}">
+                <button>View Details</button>
+            </a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No sections available.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{%if sections.has_other_pages %}
+<div class="pag">
+    {%if sections.has_previous %}
+    <div><a href="?page=1">&lt;&lt; First</a></div>
+    <div><a href="?page={{sections.previous_page_number}}">&lt; Prev</a></div>
+    {% endif %}
+    <span>Page {{sections.number}} of {{sections.paginator.num_pages }}</span>
+    {% if sections.has_next %}
+    <div><a href="?page={{ sections.next_page_number}}">Next &gt;</a></div>
+    <div><a href="?page={{ sections.paginator.num_pages}}">Last &gt;&gt;</a></div>
+    {% endif %}
+</div>
+
+{% endif %}
+
+{% endblock %}
