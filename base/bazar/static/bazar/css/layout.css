@@ -3,45 +3,49 @@
     color: rgba(66, 69, 81, 1);
 }
 
-header{
+header {
     display: flex;
     flex-flow: row, nowrap;
     justify-content: space-between;
 }
+
 nav>a {
     margin: 10px;
 }
-table{
+
+table {
     margin-top: 30px;
 }
 
-footer{
+footer {
     display: flex;
-    margin-top:30px;
+    margin-top: 30px;
 }
-body{
+
+body {
     max-width: 700px;
 }
 
-td, th{
+td,
+th {
     padding: 5px;
     text-align: center;
     white-space: nowrap;
-       
+
 }
 
-td:first-child{
+td:first-child {
     text-align: left;
 }
 
-.title{
+.title {
     display: flex;
     font-size: 20px;
     margin-top: 50px;
-  
+
 }
 
-.pag{
+.pag {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -54,20 +58,20 @@ td:first-child{
     margin: 0;
 }
 
-footer{
+footer {
     margin-bottom: 20px;
 }
 
-.manage_nav{
+.manage_nav {
     position: relative;
     top: 50px;
     left: 20px;
     font-size: 16px;
-    list-style-type:disc;
-    
+    list-style-type: disc;
+
 }
 
-.form{
+.form {
     width: 230px;
     border: 1px solid black;
     padding: 20px;
@@ -76,23 +80,25 @@ footer{
 
 }
 
-.form form >  p {
+.form form>p {
     font-size: 16px;
     margin-top: 8px;
 }
 
-.form input, .form select, .form button{
-    padding:5px;
+.form input,
+.form select,
+.form button {
+    padding: 5px;
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
 }
 
-.form button{
+.form button {
     margin-top: 15px;
 }
 
-.form input[type="checkbox"]{
+.form input[type="checkbox"] {
     display: inline;
     align-items: center;
     display: block;
@@ -102,11 +108,11 @@ footer{
     margin-top: 2px;
 }
 
-.form form > div{
+.form form>div {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    
+
 }
 
 .form form div p {
@@ -115,33 +121,74 @@ footer{
 }
 
 
-.detail_block .title{
+.detail_block .title {
     font-size: 32px;
     padding-bottom: 20px;
 }
 
-.detail_block > div{
+.detail_block>div {
     padding: 5px;
-    border: 1px solid black;  
+    border: 1px solid black;
 }
 
-.return_to_table{
+.return_to_table {
     text-align: center;
     margin-top: 15px;
-    border:none !important;
+    border: none !important;
 }
 
-.message_box{
+.message_box {
     margin-top: 100px;
     margin-bottom: 100px;
     width: 400px;
 }
 
-.message_box> p{
+.message_box>p {
     display: block;
-    margin:auto;
+    margin: auto;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
-    
+
+}
+
+.link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.messages_block {
+    height: 300px;
+    width: 300px;
+}
+
+.form_one_button {
+    display: inline-block;
+    margin: 10px;
+}
+
+.profile {
+    width: 600px;
+}
+
+.profile textarea {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    resize: none;
+    scrollbar-width: 5px;
+    border: 2px solid black;
+}
+
+.profile .title {
+    margin: none;
 }

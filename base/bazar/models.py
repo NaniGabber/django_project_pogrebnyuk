@@ -26,7 +26,9 @@ class Section(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            temp = self.title.translate(str.maketrans("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ","abvgdeejzijklmnoprstufhzcss_y_euaABVGDEEJZIJKLMNOPRSTUFHZCSS_...: Y_EUA"))
+            self.slug = slugify(temp)
+            
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -48,7 +50,10 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            temp = self.title.translate(str.maketrans("абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
+                                                      "abvgdeejzijklmnoprstufhzcss_y_eua"))
+            self.slug = slugify(temp)
+            
         super().save(*args, **kwargs)
 
     def __str__(self):

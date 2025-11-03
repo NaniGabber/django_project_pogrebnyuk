@@ -1,0 +1,17 @@
+{% extends 'bazar/layout.html' %}
+{% load static %}
+{% block content %}
+<div class="title"><p>Login</p></div>
+<div class="content">
+    <div class="form">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        
+    </div>
+</div>
+{% endblock content %}
+
+    

@@ -1,0 +1,19 @@
+{% extends 'bazar/layout.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="form profile">
+    <div class="title">
+        <p>{{user.username}}'s profile</p>
+    </div>
+    <img src="{{ user.profile.avatar.url }}" width="150" alt="image.png"> <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{u_form.as_p}}
+        {{p_form.as_p}}
+        <button type="submit">Update profile</button>
+    </form>
+</div>
+{% endblock content %}

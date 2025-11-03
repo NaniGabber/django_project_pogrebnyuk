@@ -4,10 +4,10 @@ from .models import Product, Section
 from django.core.paginator import Paginator
 from .forms import ProductForm, SectionForm
 from django.views.generic import DetailView, UpdateView, DeleteView
-
+from django.contrib.auth.decorators import login_required
 PAGINATOR_PER_PAGE = 10
 
-
+@login_required
 def get_products(request):
     products = Product.objects.all()
 
@@ -17,7 +17,7 @@ def get_products(request):
         {"products": paginator_wrapper(products, request)},
     )
 
-
+@login_required
 def get_sections(request):
     sections = Section.objects.all()
     return render(

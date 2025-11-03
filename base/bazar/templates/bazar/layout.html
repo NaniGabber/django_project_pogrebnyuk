@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Мій сайт{% endblock %}</title>
+    <title>{% block title %}bazar app :){% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'bazar/css/layout.css' %}">
 </head>
+
 <body>
     <header>
         <h1>bazar app :)</h1>
         <nav>
             {% block nav %}
-                <a href="{% url 'section_view' %}">Sections</a>
-                <a href="{% url 'product_view' %}">Products</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'section_view' %}">Sections</a>
+            <a href="{% url 'product_view' %}">Products</a>
+            {% endif %}
             {% endblock %}
+            {% include 'accounts/nav_layout.html' %}
+
         </nav>
     </header>
 
@@ -21,10 +27,18 @@
         <div id="content">
             {% block content %}{% endblock %}
         </div>
+        <div class="messages_block">
+            {% if messages %}
+            {% for message in messages %}
+            <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+        </div>
     </main>
 
     <footer>
         <p>Pogrebnyuk &copy;2025</p>
     </footer>
 </body>
+
 </html>
