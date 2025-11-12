@@ -1,0 +1,57 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+<div class="cart form">
+    <p>Your cart</p>
+    <div class="cart_close_button"><img src="{% static 'bazar/images/close_button.png' %}" alt=""></div>
+    {% if items %}
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+
+        {% for item in items %}
+        <tr>
+            <td>{{item.product.title}}</td>
+            <td>${{item.product.price|floatformat:-2 }}</td>
+            <td>
+                <form method="post" action="{% url 'add_to_cart' item.product.slug %}">
+                    {% csrf_token %}
+                    <input type="number" step="0" value={{item.quantity}} type="submit" name="item_quantity">
+                </form>
+            </td>
+            <td>${{item.get_total_price|floatformat:-2 }}</td>
+            <td class="buttons">
+
+                <form method="post" action="{% url 'remove_from_cart' item.product.slug %}">
+                    {% csrf_token %}
+                    <button type="submit">-</button>
+                </form>
+                <form method="post" action="{% url 'add_to_cart' item.product.slug %}">
+                    {% csrf_token %}
+                    <button type="submit">+</button>
+                </form>
+                <form method="post" action="{% url 'remove_from_cart' slug=item.product.slug %}?product_delete=true">
+                    {% csrf_token %}
+                    <button type="submit">x</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <p id="cart_total">Total: ${{ total|floatformat:-2 }}</p>
+    <form method="post" action="{% url 'buy_cart' %}">
+        {% csrf_token %}
+        <button class="buy_button" type="submit">Buy</button>
+    </form>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock content %}

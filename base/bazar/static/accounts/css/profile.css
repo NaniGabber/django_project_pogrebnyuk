@@ -1,0 +1,16 @@
+.profile_header{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+}
+
+.profile_header .left img{
+    width: 190px;
+    height:190px;
+}
+
+.title p{
+    text-align: center;
+    margin: auto;
+}

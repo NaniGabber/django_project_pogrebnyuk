@@ -27,9 +27,14 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("bazar/", include("bazar.urls")),
     path("accounts/", include("accounts.urls")),
+    path("cart/", include("cart.urls")),
     path(
         "login/",
-        auth_views.LoginView.as_view(template_name="accounts/login.html"),
+        auth_views.LoginView.as_view(
+            template_name="accounts/login.html",
+            redirect_authenticated_user=True,
+            next_page="profile",
+        ),
         name="login",
     ),
     path("logout/", auth_views.LogoutView.as_view(next_page="login"), name="logout"),

@@ -26,6 +26,13 @@
             <a href="{% url 'product_detail' product.slug %}">
                 <button>View details</button>
             </a>
+
+        </td>
+        <td>
+            <form method="post" action="{% url 'add_to_cart' product.slug %}">
+                {% csrf_token %}
+                <button type="submit">Add to cart</button>
+            </form>
         </td>
     </tr>
     {% empty %}

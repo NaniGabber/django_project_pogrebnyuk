@@ -1,17 +1,62 @@
 {% extends 'bazar/layout.html' %}
 {% load static %}
-
-
 {% block content %}
-
+<link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
 <div class="form profile">
-    <div class="title">
-        <p>{{user.username}}'s profile</p>
-    </div>
-    <img src="{{ user.profile.avatar.url }}" width="150" alt="image.png"> <br>
     <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{u_form.as_p}}
+        <div class="title">
+            <p>{{user.username}}'s profile</p>
+        </div>
+        <div class="profile_header">
+            <div class="left">
+                <img src="{{ user.profile.avatar.url }}" alt="image.png"> <br>
+                {% csrf_token %}
+            </div>
+            <div class="right">
+                <div class="form-group">
+                    {{ u_form.username.label_tag }}
+                    {{ u_form.username }}
+                    {% if u_form.username.help_text %}
+                    <div class="help-text">{{ u_form.username.help_text }}</div>
+                    {% endif %}
+                    {{ u_form.username.errors }}
+                </div>
+                <div class="form-group">
+                    {{ u_form.first_name.label_tag }}
+                    {{ u_form.first_name }}
+                    {% if u_form.first_name.help_text %}
+                    <div class="help-text">{{ u_form.first_name.help_text }}</div>
+                    {% endif %}
+                    {{ u_form.first_name.errors }}
+                </div>
+                <div class="form-group">
+                    {{ u_form.last_name.label_tag }}
+                    {{ u_form.last_name }}
+                    {% if u_form.last_name.help_text %}
+                    <div class="help-text">{{ u_form.last_name.help_text }}</div>
+                    {% endif %}
+                    {{ u_form.last_name.errors }}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ u_form.email.label_tag }}
+            {{ u_form.email }}
+            {% if u_form.email.help_text %}
+            <div class="help-text">{{ u_form.email.help_text }}</div>
+            {% endif %}
+            {{ u_form.email.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ u_form.new_password.label_tag }}
+            {{ u_form.new_password }}
+            {% if u_form.new_password.help_text %}
+            <div class="help-text">{{ u_form.new_password.help_text }}</div>
+            {% endif %}
+            {{ u_form.new_password.errors }}
+        </div>
         {{p_form.as_p}}
         <button type="submit">Update profile</button>
     </form>

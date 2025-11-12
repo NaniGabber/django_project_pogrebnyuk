@@ -15,10 +15,10 @@ class Profile(models.Model):
             ("O", "Other"),
         ],
         blank=True,
-        null=True,  # ← виправлено з null=False
+        null=True,  
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)  # ← виправлено назву поля
+    updated_at = models.DateTimeField(auto_now=True) 
     is_verified = models.BooleanField(default=False)
     email_notifications = models.BooleanField(default=True)
     location = models.CharField(max_length=100, blank=True, null=True)

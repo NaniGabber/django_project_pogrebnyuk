@@ -16,9 +16,12 @@
             dignissimos fugit beatae ullam minus laborum eveniet adipisci eius enim, quo architecto? Quae rem provident
             cumque!</div>
         <div class="manage_buttons">
+            <form method="post" action="{% url 'add_to_cart' product.slug %}">
+                {% csrf_token %}
+                <button type="submit">Add to cart</button>
+            </form>
             <a href="{% url 'product_update' product.slug %}"><button>Update</button></a>
             <a href="{% url 'product_delete' product.slug %}"><button>Delete</button></a>
-
         </div>
         <div class="return_to_table"><a href="{% url 'product_view' %}">Back to products</a></div>
     </div>

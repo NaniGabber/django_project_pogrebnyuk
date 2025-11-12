@@ -32,11 +32,9 @@ def register(request):
                 },
             )
             send_mail(subject, message, "admin@mysite.com", [user.email])
-            print("EMAIL SENT TO:", user.email)
-            print("MESSAGE:", message)
 
             messages.info(request, "We've send a confirmation list to your email")
-            return redirect("login")
+            return redirect("product_view")
     else:
         form = UserRegistrationForm()
     return render(request, "accounts/register.html", {"form": form})

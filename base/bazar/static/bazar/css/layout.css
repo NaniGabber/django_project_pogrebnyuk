@@ -4,9 +4,24 @@
 }
 
 header {
+
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    border: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.header {
     display: flex;
     flex-flow: row, nowrap;
     justify-content: space-between;
+    max-width: 600px;
+
 }
 
 nav>a {
@@ -41,7 +56,7 @@ td:first-child {
 .title {
     display: flex;
     font-size: 20px;
-    margin-top: 50px;
+    margin-top: 20px;
 
 }
 
@@ -62,13 +77,22 @@ footer {
     margin-bottom: 20px;
 }
 
+main{
+    margin-top: 80px;
+}
 .manage_nav {
-    position: relative;
-    top: 50px;
-    left: 20px;
+
     font-size: 16px;
     list-style-type: disc;
+    margin-top: 80px;
+}
 
+.manage_buttons * {
+    display: inline;
+}
+
+.manage_buttons a {
+    text-decoration: none;
 }
 
 .form {
@@ -109,14 +133,11 @@ footer {
 }
 
 .form form>div {
-    display: flex;
-    justify-content: space-between;
     margin-top: 10px;
-
 }
 
 .form form div p {
-    margin: 0;
+    margin-top: 10px;
     display: block;
 }
 
@@ -137,22 +158,9 @@ footer {
     border: none !important;
 }
 
-.message_box {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    width: 400px;
-}
 
-.message_box>p {
-    display: block;
-    margin: auto;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-
-}
-
-.link-button {
+.link-button,
+nav>div {
     background: none;
     border: none;
     padding: 0;
@@ -164,9 +172,29 @@ footer {
     appearance: none;
 }
 
-.messages_block {
-    height: 300px;
-    width: 300px;
+nav>div {
+    display: inline;
+    margin: 10px;
+}
+
+.messages_block p{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    position: fixed;
+    top:50%;
+    left:50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    min-height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    padding:10px 20px 10px 20px;
+    font-size: 18px;
 }
 
 .form_one_button {
@@ -176,6 +204,7 @@ footer {
 
 .profile {
     width: 600px;
+    margin-top: 80px;
 }
 
 .profile textarea {
@@ -192,3 +221,13 @@ footer {
 .profile .title {
     margin: none;
 }
+
+.messages_block p {
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.messages_block p.fade_out {
+  opacity: 0;
+}
+

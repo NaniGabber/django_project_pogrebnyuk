@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 from .forms import ProductForm, SectionForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
-PAGINATOR_PER_PAGE = 10
+PAGINATOR_PER_PAGE = 15
 
 @login_required
 def get_products(request):
