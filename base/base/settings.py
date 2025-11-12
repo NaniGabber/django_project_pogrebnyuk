@@ -22,7 +22,7 @@ CONTENT_SECURITY_POLICY = {
         "font-src": [SELF],
         "connect-src": [SELF],
     },
-    "NONCE_IN": ["script-src"],  
+    "NONCE_IN": ["script-src"],
 }
 
 
@@ -55,7 +55,11 @@ INSTALLED_APPS = [
     "bazar",
     "accounts",
     "cart",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "api",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -147,3 +151,12 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "login"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}

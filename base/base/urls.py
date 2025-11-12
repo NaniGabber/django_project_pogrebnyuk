@@ -21,7 +21,7 @@ from django.urls import include
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -38,4 +38,7 @@ urlpatterns = [
         name="login",
     ),
     path("logout/", auth_views.LogoutView.as_view(next_page="login"), name="logout"),
+    path("api/", include('api.urls')),
+    path("api-token-auth/", obtain_auth_token, name='api-token-auth'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
