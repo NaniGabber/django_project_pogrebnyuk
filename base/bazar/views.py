@@ -5,7 +5,10 @@ from django.core.paginator import Paginator
 from .forms import ProductForm, SectionForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 PAGINATOR_PER_PAGE = 15
+
 
 @login_required
 def get_products(request):
@@ -16,6 +19,7 @@ def get_products(request):
         "bazar/product/product_view.html",
         {"products": paginator_wrapper(products, request)},
     )
+
 
 @login_required
 def get_sections(request):
@@ -86,15 +90,18 @@ class SectionUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = 'bazar/product/product_delete.html'
-    context_object_name = 'product'
+    template_name = "bazar/product/product_delete.html"
+    context_object_name = "product"
     success_url = reverse_lazy("product_view")
+
+    def delete(self, request, *args, **kwargs):
+        response = super().delete(request, *args, **kwargs)
+        messages.success(request, f"'{self.object.title}' has been deleted successfully")
+        return response
 
 
 class SectionDeleteView(DeleteView):
     model = Section
-    template_name = 'bazar/section/section_delete.html'
-    context_object_name = 'product'
-    success_url = reverse_lazy('section_view')
-
-    
+    template_name = "bazar/section/section_delete.html"
+    context_object_name = "product"
+    success_url = reverse_lazy("section_view")
