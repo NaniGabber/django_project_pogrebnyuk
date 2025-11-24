@@ -1,0 +1,115 @@
+.cart {
+    z-index: 1;
+    width: 450px;
+    text-align: center;
+    vertical-align: middle;
+    position: fixed;
+    top: 0;
+    right: 50%;
+    transform: translate(400px, 10px);
+    background-color: white;
+    visibility: hidden;
+}
+
+@media (max-width: 855px) {
+    .cart {
+        transform: translate(0, 100px);
+        right: 20px;
+    }
+
+}
+
+.cart>p {
+    font-size: 24px;
+}
+
+.cart .buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height: 28px;
+    gap: 10px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 90px;
+}
+
+.cart .buttons button {
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    vertical-align: middle;
+    line-height: 0px;
+    margin-top: 0px;
+    position: relative;
+    top: 3px;
+}
+
+.cart td,
+.cart th {
+    width: 60px;
+
+}
+
+#cart_total {
+    margin-top: 20px;
+    font-size: 32px;
+}
+
+.cart_close_button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.cart_close_button img {
+    width: 50px;
+    height: 50px;
+}
+
+
+.cart_button {
+    width: 40px;
+    height: 40px;
+
+}
+
+.cart_button img {
+    width: 40px;
+    height: 40px;
+}
+
+.cart .buy_button {
+    font-size: 16px;
+}
+
+.cart tbody {
+    display: block;
+    max-height: 400px;
+    scrollbar-width: 10px;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-collapse: separate;
+}
+
+.cart table {
+    border-collapse: separate;
+    border-spacing: 0;
+
+}
+
+.cart th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 5px;
+    z-index: 3;
+}
+
+.cart td:nth-child(1),
+.cart th:nth-child(1) {
+    width: 200px;
+}

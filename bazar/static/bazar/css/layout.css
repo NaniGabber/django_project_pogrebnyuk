@@ -1,0 +1,233 @@
+* {
+    margin: auto;
+    color: rgba(66, 69, 81, 1);
+}
+
+header {
+
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    border: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.header {
+    display: flex;
+    flex-flow: row, nowrap;
+    justify-content: space-between;
+    max-width: 600px;
+
+}
+
+nav>a {
+    margin: 10px;
+}
+
+table {
+    margin-top: 30px;
+}
+
+footer {
+    display: flex;
+    margin-top: 30px;
+}
+
+body {
+    max-width: 700px;
+}
+
+td,
+th {
+    padding: 5px;
+    text-align: center;
+    white-space: nowrap;
+
+}
+
+td:first-child {
+    text-align: left;
+}
+
+.title {
+    display: flex;
+    font-size: 20px;
+    margin-top: 20px;
+
+}
+
+.pag {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: auto;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.pag * {
+    margin: 0;
+}
+
+footer {
+    margin-bottom: 20px;
+}
+
+main{
+    margin-top: 80px;
+}
+.manage_nav {
+
+    font-size: 16px;
+    list-style-type: disc;
+    margin-top: 80px;
+}
+
+.manage_buttons * {
+    display: inline;
+}
+
+.manage_buttons a {
+    text-decoration: none;
+}
+
+.form {
+    width: 230px;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+
+}
+
+.form form>p {
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.form input,
+.form select,
+.form button {
+    padding: 5px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form button {
+    margin-top: 15px;
+}
+
+.form input[type="checkbox"] {
+    display: inline;
+    align-items: center;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-right: 0px;
+    margin-top: 2px;
+}
+
+.form form>div {
+    margin-top: 10px;
+}
+
+.form form div p {
+    margin-top: 10px;
+    display: block;
+}
+
+
+.detail_block .title {
+    font-size: 32px;
+    padding-bottom: 20px;
+}
+
+.detail_block>div {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.return_to_table {
+    text-align: center;
+    margin-top: 15px;
+    border: none !important;
+}
+
+
+.link-button,
+nav>div {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+nav>div {
+    display: inline;
+    margin: 10px;
+}
+
+.messages_block p{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    position: fixed;
+    top:50%;
+    left:50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    min-height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    padding:10px 20px 10px 20px;
+    font-size: 18px;
+}
+
+.form_one_button {
+    display: inline-block;
+    margin: 10px;
+}
+
+.profile {
+    width: 600px;
+    margin-top: 80px;
+}
+
+.profile textarea {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    resize: none;
+    scrollbar-width: 5px;
+    border: 2px solid black;
+}
+
+.profile .title {
+    margin: none;
+}
+
+.messages_block p {
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.messages_block p.fade_out {
+  opacity: 0;
+}
+
