@@ -7,6 +7,7 @@ from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.utils.decorators import method_decorator
 
 PAGINATOR_PER_PAGE = 15
 
@@ -61,34 +62,36 @@ def create_section(request):
     return handle_create(
         request, SectionForm, "bazar/section/create_section.html", "section_view"
     )
-
-@login_required
+@method_decorator(login_required, name="dispatch")
 class ProductDetailView(DetailView):
     model = Product
     template_name = "bazar/product/product_detail_view.html"
     context_object_name = "product"
 
-@login_required
+@method_decorator(login_required, name="dispatch")
 class SectionDetailView(DetailView):
     model = Section
     template_name = "bazar/section/section_detail_view.html"
     context_object_name = "section"
 
-@staff_member_required
+@method_decorator(login_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class ProductUpdateView(UpdateView):
     model = Product
     template_name = "bazar/product/product_update.html"
     success_url = reverse_lazy("product_view")
     form_class = ProductForm
 
-@staff_member_required
+@method_decorator(login_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class SectionUpdateView(UpdateView):
     model = Section
     template_name = "bazar/section/section_update.html"
     success_url = reverse_lazy("section_view")
     form_class = SectionForm
 
-@staff_member_required
+@method_decorator(login_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class ProductDeleteView(DeleteView):
     model = Product
     template_name = "bazar/product/product_delete.html"
@@ -100,9 +103,10 @@ class ProductDeleteView(DeleteView):
         messages.success(request, f"'{self.object.title}' has been deleted successfully")
         return response
 
-@staff_member_required
+@method_decorator(login_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class SectionDeleteView(DeleteView):
     model = Section
     template_name = "bazar/section/section_delete.html"
-    context_object_name = "product"
+    context_object_name = "section"
     success_url = reverse_lazy("section_view")
