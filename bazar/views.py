@@ -5,7 +5,9 @@ from django.core.paginator import Paginator
 from .forms import ProductForm, SectionForm
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.utils.decorators import method_decorator
 
 PAGINATOR_PER_PAGE = 15
 
@@ -37,7 +39,7 @@ def paginator_wrapper(view, request):
     page_obj = paginator.get_page(page_number)
     return page_obj
 
-
+@staff_member_required
 def handle_create(request, form_class, template_name, redirect_url):
     error = ""
     form = form_class(request.POST)
@@ -49,45 +51,47 @@ def handle_create(request, form_class, template_name, redirect_url):
 
     return render(request, template_name, {"form": form, "error": error})
 
-
+@staff_member_required
 def create_product(request):
     return handle_create(
         request, ProductForm, "bazar/product/create_product.html", "product_view"
     )
 
-
+@staff_member_required
 def create_section(request):
     return handle_create(
         request, SectionForm, "bazar/section/create_section.html", "section_view"
     )
-
-
+@method_decorator(login_required, name="dispatch")
 class ProductDetailView(DetailView):
     model = Product
     template_name = "bazar/product/product_detail_view.html"
     context_object_name = "product"
 
-
+@method_decorator(login_required, name="dispatch")
 class SectionDetailView(DetailView):
     model = Section
     template_name = "bazar/section/section_detail_view.html"
     context_object_name = "section"
 
-
+@method_decorator(login_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class ProductUpdateView(UpdateView):
     model = Product
     template_name = "bazar/product/product_update.html"
     success_url = reverse_lazy("product_view")
     form_class = ProductForm
 
-
+@method_decorator(login_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class SectionUpdateView(UpdateView):
     model = Section
     template_name = "bazar/section/section_update.html"
     success_url = reverse_lazy("section_view")
     form_class = SectionForm
 
-
+@method_decorator(login_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class ProductDeleteView(DeleteView):
     model = Product
     template_name = "bazar/product/product_delete.html"
@@ -99,9 +103,10 @@ class ProductDeleteView(DeleteView):
         messages.success(request, f"'{self.object.title}' has been deleted successfully")
         return response
 
-
+@method_decorator(login_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class SectionDeleteView(DeleteView):
     model = Section
     template_name = "bazar/section/section_delete.html"
-    context_object_name = "product"
+    context_object_name = "section"
     success_url = reverse_lazy("section_view")
