@@ -1,6 +1,5 @@
 services:
   db:
-    container_name: database
     image: postgres:15
     environment:
       POSTGRES_DB: db_pogrebnyuk
@@ -10,30 +9,19 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   django_proj:
-    container_name: django_proj
     build: .
     volumes:
       - .:/base
       - media_volume:/media
 
-    # ports:
-    #   - "8000:8000"
+    ports:
+      - "8000:8000"
 
     depends_on:
       - db
     
     env_file:
       - .env
-
-    environment:
-      DJANGO_SETTINGS_MODULE: base.settings
-      DEBUG: 1
-      PGDATABASE: db_pogrebnyuk
-      PGUSER: username
-      PGPASSWORD: Qwerty123
-      PGHOST: db
-      PGPORT: 5432
-      PORT: 8000
 
 volumes:
   postgres_data:
