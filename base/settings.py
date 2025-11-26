@@ -94,16 +94,18 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
 
 SECRET_KEY = os.getenv("SECRET_KEY", "")
 
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", "db_pogrebnyuk"),
-        "USER": os.getenv("DB_USER", "username"),
-        "PASSWORD": os.getenv("DB_PASSWORD", "Qwerty123"),
-        "HOST": os.getenv("DB_HOST", "localhost"),
-        "PORT": os.getenv("DB_PORT", "5432"),
+        "NAME": os.getenv("PGDATABASE", "db_pogrebnyuk"),
+        "USER": os.getenv("PGUSER", "username"),
+        "PASSWORD": os.getenv("PGPASSWORD", "Qwerty123"),
+        "HOST": os.getenv("PGHOST", "localhost"),
+        "PORT": os.getenv("PGPORT", "5432"),
     }
 }
+
 
 
 # Password validation
