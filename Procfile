@@ -1,2 +1,2 @@
 
-web: gunicorn base.wsgi --bind 0.0.0.0:8448 --workers 3
+web: gunicorn base.wsgi --bind 0.0.0.0:$PORT --workers 3
