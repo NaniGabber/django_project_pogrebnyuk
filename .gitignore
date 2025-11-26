@@ -10,6 +10,7 @@ static/ # Collected static files (if not served directly by Django)
 
 # Virtual Environment
 .env
+*.env
 venv/
 env/
 
