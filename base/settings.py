@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "api",
+<<<<<<< HEAD
     # двофакторка
     "django_otp",
     "django_otp.plugins.otp_static",
@@ -85,6 +86,12 @@ INSTALLED_APPS = [
     "two_factor",
     "two_factor.plugins.phonenumber",
     'two_factor.plugins.email',
+=======
+    # двофакторка для адмінки
+    "django_otp",
+    "django_otp.plugins.otp_totp",
+    "two_factor",
+>>>>>>> 86431f9092e168695247b83bf4f2cb38b37b9e4e
 ]
 
 
