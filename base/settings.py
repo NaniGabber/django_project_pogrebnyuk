@@ -89,6 +89,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "csp.middleware.CSPMiddleware",
+    "base.middleware.AdminIPRestrictionMiddleware",
+
 ]
 
 ROOT_URLCONF = "base.urls"
