@@ -25,7 +25,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    path("donttouchmethere/", include("two_factor.urls", "two_factor")),
+    path("donttouchmethere/", include("two_factor.urls")),
     path("donttouchmethere/admin/", admin.site.urls),
     path("bazar/", include("bazar.urls")),
     path("accounts/", include("accounts.urls")),
