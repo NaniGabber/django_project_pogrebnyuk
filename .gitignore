@@ -30,3 +30,7 @@ Thumbs.db
 .vscode/
 node_modules/
 *.log
+
+
+#sql
+*.sql
