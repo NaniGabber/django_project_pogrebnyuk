@@ -36,20 +36,21 @@ LOGGING = {
         },
     },
 }
-CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
+CSRF_FAILURE_VIEW = "django.views.csrf.csrf_failure"
 CSRF_COOKIE_SECURE = True
 
-CONTENT_SECURITY_POLICY = {
-    "DIRECTIVES": {
-        "default-src": [SELF],
-        "script-src": [SELF, NONCE],
-        "style-src": [SELF],
-        "img-src": [SELF],
-        "font-src": [SELF],
-        "connect-src": [SELF],
-    },
-    "NONCE_IN": ["script-src"],
+CSP_DIRECTIVES = {
+    "default-src": ["'self'"],
+    "script-src": ["'self'", "'nonce'", "https://cdnjs.cloudflare.com"],
+    "style-src": ["'self'", "https://cdnjs.cloudflare.com"],
+    "font-src": ["'self'", "https://cdnjs.cloudflare.com"],
+    "img-src": ["'self'"],
+    "connect-src": ["'self'"],
 }
+
+CSP_NONCE_IN = ["script-src"]
+
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -76,10 +77,19 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "api",
+    # двофакторка
+    "django_otp",
+    "django_otp.plugins.otp_static",
+    "django_otp.plugins.otp_totp",
+    "django_otp.plugins.otp_email",
+    "two_factor",
+    "two_factor.plugins.phonenumber",
+    'two_factor.plugins.email',
 ]
 
 
 MIDDLEWARE = [
+    "django_otp.middleware.OTPMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -90,7 +100,6 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "csp.middleware.CSPMiddleware",
     "base.middleware.AdminIPRestrictionMiddleware",
-
 ]
 
 ROOT_URLCONF = "base.urls"
@@ -194,8 +203,8 @@ CSRF_TRUSTED_ORIGINS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "login"
+LOGIN_URL = 'two_factor:login'
+LOGIN_REDIRECT_URL = 'two_factor:profile'
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
