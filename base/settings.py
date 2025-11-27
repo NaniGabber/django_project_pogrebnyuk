@@ -37,6 +37,7 @@ LOGGING = {
     },
 }
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
+CSRF_COOKIE_SECURE = True
 
 CONTENT_SECURITY_POLICY = {
     "DIRECTIVES": {
