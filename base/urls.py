@@ -26,13 +26,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from two_factor.urls import urlpatterns as tf_urls
 
 urlpatterns = [
-<<<<<<< HEAD
     path("", include(tf_urls)),
     path("donttouchmethere/", admin.site.urls),
-=======
-    path("donttouchmethere/", include("two_factor.urls")),
-    path("donttouchmethere/admin/", admin.site.urls),
->>>>>>> 86431f9092e168695247b83bf4f2cb38b37b9e4e
+
     path("bazar/", include("bazar.urls")),
     path("accounts/", include("accounts.urls")),
     path("cart/", include("cart.urls")),

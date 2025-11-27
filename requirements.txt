@@ -7,10 +7,6 @@ psycopg2==2.9.11
 PyJWT>=2.10.1
 gunicorn >=23.0.0
 whitenoise >=6.11.0
-<<<<<<< HEAD
 django-two-factor-auth >= 1.18.1
 django_otp >=1.6.3
 phonenumbers >=8.13.40
-=======
-django-two-factor-auth >= 1.18.1
->>>>>>> 86431f9092e168695247b83bf4f2cb38b37b9e4e
