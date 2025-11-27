@@ -8,7 +8,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
-
+from base import settings
 from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 
 
@@ -31,7 +31,7 @@ def register(request):
                     "token": default_token_generator.make_token(user),
                 },
             )
-            send_mail(subject, message, "admin@mysite.com", [user.email])
+            send_mail(subject, message, settings.EMAIL_HOST_USER, [user.email])
 
             messages.info(request, "We've send a confirmation list to your email")
             return redirect("product_view")

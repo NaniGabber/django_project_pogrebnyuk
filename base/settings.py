@@ -13,6 +13,31 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from csp.constants import SELF, NONCE
 import os
+import logging
+from logging.handlers import RotatingFileHandler
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "django.log",
+            "maxBytes": 5 * 1024 * 1024,  # 5 MB
+            "backupCount": 3,  # keep 3 old log files
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
+}
+CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
+CSRF_COOKIE_SECURE = True
 
 CONTENT_SECURITY_POLICY = {
     "DIRECTIVES": {
@@ -107,7 +132,6 @@ DATABASES = {
 }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -147,7 +171,23 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# Використовуємо змінні середовища для безпеки
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://nani.up.railway.app",
+]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
