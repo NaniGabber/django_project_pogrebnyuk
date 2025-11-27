@@ -36,7 +36,7 @@ LOGGING = {
         },
     },
 }
-CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
+CSRF_FAILURE_VIEW = "django.views.csrf.csrf_failure"
 CSRF_COOKIE_SECURE = True
 
 CONTENT_SECURITY_POLICY = {
@@ -76,10 +76,16 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "api",
+    # двофакторка для адмінки
+    "django_otp",
+    "django_otp.plugins.otp_totp",
+    "two_factor",
+    "django.contrib.admin",
 ]
 
 
 MIDDLEWARE = [
+    "django_otp.middleware.OTPMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -90,7 +96,6 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "csp.middleware.CSPMiddleware",
     "base.middleware.AdminIPRestrictionMiddleware",
-
 ]
 
 ROOT_URLCONF = "base.urls"
