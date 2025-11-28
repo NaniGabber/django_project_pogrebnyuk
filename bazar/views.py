@@ -89,7 +89,7 @@ class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     
     def handle_no_permission(self):
         messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to update product.")
-        return redirect("product")
+        return redirect("products")
 
 
 
@@ -104,7 +104,7 @@ class SectionUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def handle_no_permission(self):
         messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to update section.")
-        return redirect("product")
+        return redirect("sections")
 
 
 class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -118,7 +118,7 @@ class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     
     def handle_no_permission(self):
         messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to delete product.")
-        return redirect("product")
+        return redirect("products")
 
     def delete(self, request, *args, **kwargs):
         response = super().delete(request, *args, **kwargs)
@@ -138,7 +138,7 @@ class SectionDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user.is_superuser
     
     def handle_no_permission(self):
-        messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to delete section.")
-        return redirect("product")
+        messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to delete sections.")
+        return redirect("sections")
 
 
