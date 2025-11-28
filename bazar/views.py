@@ -73,18 +73,24 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
     template_name = "bazar/product/product_detail_view.html"
     context_object_name = "product"
 
-
 class SectionDetailView(LoginRequiredMixin, DetailView):
     model = Section
     template_name = "bazar/section/section_detail_view.html"
     context_object_name = "section"
-
 
 class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Product
     template_name = "bazar/product/product_update.html"
     success_url = reverse_lazy("product_view")
     form_class = ProductForm
+
+    def test_func(self):
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to update product.")
+        return redirect("product")
+
 
 
 class SectionUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -93,12 +99,26 @@ class SectionUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     success_url = reverse_lazy("section_view")
     form_class = SectionForm
 
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def handle_no_permission(self):
+        messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to update section.")
+        return redirect("product")
+
 
 class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Product
     template_name = "bazar/product/product_delete.html"
     context_object_name = "product"
     success_url = reverse_lazy("product_view")
+
+    def test_func(self):
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to delete product.")
+        return redirect("product")
 
     def delete(self, request, *args, **kwargs):
         response = super().delete(request, *args, **kwargs)
@@ -107,13 +127,18 @@ class ProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         )
         return response
 
-    @method_decorator(staff_member_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
-
 
 class SectionDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Section
     template_name = "bazar/section/section_delete.html"
     context_object_name = "section"
     success_url = reverse_lazy("section_view")
+
+    def test_func(self):
+        return self.request.user.is_superuser
+    
+    def handle_no_permission(self):
+        messages.info(self.request, "Only a superadmin or a staff user (administrator) is allowed to delete section.")
+        return redirect("product")
+
+
