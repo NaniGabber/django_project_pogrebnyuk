@@ -1,6 +1,9 @@
 from django.http import HttpResponseForbidden
 
-ALLOWED_IPS = ["127.0.0.1", "::1", "77.75.146.202"]
+ALLOWED_IPS = ["172.18.0.1", "127.0.0.1", "::1", "77.75.146.202"] 
+# 172.18.0.1 - Docker
+# 127.0.0.1, ::1, localhost
+# 77.75.146.202 public provider address
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
