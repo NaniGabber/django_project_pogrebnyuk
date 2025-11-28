@@ -141,6 +141,14 @@ main{
     display: block;
 }
 
+.form p a {
+    margin-top: 15px;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
 
 .detail_block .title {
     font-size: 32px;
