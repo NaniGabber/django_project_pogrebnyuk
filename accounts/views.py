@@ -51,7 +51,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         messages.success(request, "Your account has been activated! Now, you can login")
-        return redirect("login")
+        return redirect("two_factor:login")
     else:
         messages.error(request, "Invalid or expired activation link.")
         return redirect("register")
