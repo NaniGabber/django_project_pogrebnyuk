@@ -1,0 +1,69 @@
+.mb-3{
+    margin-top: 0px;
+}
+
+.form .title {
+    margin-bottom: 20px;
+}
+
+.cancel-btn{
+    width: 100%;
+    display: block;
+    padding: auto;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.w_act_btn {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.w_act_btn button{
+    width: 100px;
+}
+
+#id_method-method {
+    max-width: 350px;
+
+}
+
+#id_method-method label{
+   padding: 10px;
+}
+
+#id_method-method input[type="radio"]{
+    width: 20px;
+}
+
+form, p {
+    max-width: 350px;
+}
+
+.qr-code{
+    margin-top: 15px;
+    margin-bottom:15px;
+    display: flex;
+}
+
+.tokens{
+    display: flex;
+    flex-flow: row wrap;
+    flex-wrap: 3;
+    gap: 30px;
+    justify-content: space-between;
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.token{
+    flex: 0 0 40%;
+    text-align: center;
+}

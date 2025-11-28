@@ -58,6 +58,7 @@
             {{ u_form.new_password.errors }}
         </div>
         {{p_form.as_p}}
+        <a href="{% url 'two_factor:profile' %}"><button type="button">Two-factor auth settings</button></a>
         <button type="submit">Update profile</button>
     </form>
 </div>

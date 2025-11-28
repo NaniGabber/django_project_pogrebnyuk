@@ -17,14 +17,14 @@
         {% for item in items %}
         <tr>
             <td>{{item.product.title}}</td>
-            <td>${{item.product.price|floatformat:-2 }}</td>
+            <td>${{item.product.price|default:"0"|floatformat:-2 }}</td>
             <td>
                 <form method="post" action="{% url 'add_to_cart' item.product.slug %}">
                     {% csrf_token %}
                     <input type="number" step="0" value={{item.quantity}} type="submit" name="item_quantity">
                 </form>
             </td>
-            <td>${{item.get_total_price|floatformat:-2 }}</td>
+            <td>${{item.get_total_price|default:"0"|floatformat:-2 }}</td>
             <td class="buttons">
 
                 <form method="post" action="{% url 'remove_from_cart' item.product.slug %}">
@@ -45,7 +45,8 @@
 
     </table>
 
-    <p id="cart_total">Total: ${{ total|floatformat:-2 }}</p>
+    <p id="cart_total">Total: ${{ total|default:"0"|floatformat:-2 }}</p>
+    
     <form method="post" action="{% url 'buy_cart' %}">
         {% csrf_token %}
         <button class="buy_button" type="submit">Buy</button>
