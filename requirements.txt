@@ -7,6 +7,10 @@ psycopg2==2.9.11
 PyJWT>=2.10.1
 gunicorn >=23.0.0
 whitenoise >=6.11.0
-django-two-factor-auth >= 1.18.1
+django-two-factor-auth >=1.18.1
 django_otp >=1.6.3
-phonenumbers >=8.13.40
+phonenumbers >=9.0.19
+google-auth>=2.23.4
+google-auth-oauthlib>=1.1.0
+google-auth-httplib2>=0.1.1
+google-api-python-client>=2.108.0
