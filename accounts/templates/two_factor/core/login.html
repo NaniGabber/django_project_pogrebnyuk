@@ -8,7 +8,9 @@
 
 
 {% block content %}
-<div class="title"><p>{% block title %}{% trans "Login" %}{% endblock %}</p></div>
+<div class="title">
+  <p>{% block title %}{% trans "Login" %}{% endblock %}</p>
+</div>
 <div class="content">
   <div class="form">
     {% if wizard.steps.current == 'token' %}
@@ -18,8 +20,8 @@
       These tokens have been generated for you to print and keep safe. Please
       enter one of these backup tokens to login to your account.{% endblocktrans %}</p>
     {% endif %}
-  
-  
+
+
     <form action="" method="post">
       {% block main_form_content %}
       {% csrf_token %}
@@ -48,8 +50,8 @@
         {% csrf_token %}
         <p>{% trans "As a last resort, you can use a backup token:" %}</p>
         <p>
-          <button name="wizard_goto_step" type="submit" value="backup" class="btn btn-sm btn-secondary btn-block">{% trans
-            "Use Backup Token" %}</button>
+          <button name="wizard_goto_step" type="submit" value="backup" class="btn btn-sm btn-secondary btn-block">
+            {% trans "Use Backup Token" %}</button>
         </p>
       </form>
     </div>
