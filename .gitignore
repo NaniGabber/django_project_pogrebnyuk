@@ -13,7 +13,7 @@ static/ # Collected static files (if not served directly by Django)
 *.env
 venv/
 env/
-
+oauth/get_token_once.py
 # IDE-specific files (e.g., PyCharm)
 .idea/
 
