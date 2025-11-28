@@ -41,7 +41,7 @@ urlpatterns = [
     #     ),
     #     name="login",
     # ),
-    path("logout/", auth_views.LogoutView.as_view(next_page="login"), name="logout"),
+    path("logout/", auth_views.LogoutView.as_view(next_page="two_factor:login"), name="logout"),
     path("api/", include("api.urls")),
     # Token auth
     path("api-token-auth/", obtain_auth_token, name="api-token-auth"),
