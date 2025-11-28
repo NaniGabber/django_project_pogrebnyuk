@@ -5,7 +5,7 @@
 __pycache__/
 local_settings.py
 db.sqlite3
-media/ # Uploaded files
+!media/ # Uploaded files
 static/ # Collected static files (if not served directly by Django)
 
 # Virtual Environment
