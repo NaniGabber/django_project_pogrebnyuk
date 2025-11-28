@@ -39,7 +39,7 @@
             {% endif %}
         </div>
         {% if user.is_authenticated %}
-        <div id="cart">
+        <div id="cart" style = "visibility: hidden;">
             <script nonce="{{ request.csp_nonce }}">
                 fetch("{% url 'get_cart' %}")
                     .then(response => response.text())
@@ -51,7 +51,6 @@
             <p>Loading cart...</p>
         </div>
         {% endif %}
-        <!-- {% include 'cart/cart.html' with items=items total=total %} -->
     </main>
     <script src="{% static 'bazar/js/layout.js' %}" nonce="{{ request.csp_nonce }}"></script>
     <footer>
