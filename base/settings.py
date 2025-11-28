@@ -16,26 +16,7 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "file": {
-            "level": "DEBUG",
-            "class": "logging.handlers.RotatingFileHandler",
-            "filename": "django.log",
-            "maxBytes": 5 * 1024 * 1024,  # 5 MB
-            "backupCount": 3,  # keep 3 old log files
-        },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["file"],
-            "level": "DEBUG",
-            "propagate": True,
-        },
-    },
-}
+
 CSRF_FAILURE_VIEW = "django.views.csrf.csrf_failure"
 CSRF_COOKIE_SECURE = True
 
@@ -51,7 +32,6 @@ CSP_DIRECTIVES = {
 
 
 CSP_NONCE_IN = ["script-src"]
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -85,7 +65,7 @@ INSTALLED_APPS = [
     "django_otp.plugins.otp_email",
     "two_factor",
     "two_factor.plugins.phonenumber",
-    'two_factor.plugins.email',
+    "two_factor.plugins.email",
 ]
 
 
@@ -131,6 +111,33 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
 
 SECRET_KEY = os.getenv("SECRET_KEY", "")
 
+if DEBUG:
+    LOGGING = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "verbose": {
+                "format": "{asctime} {levelname} {name} {message}",
+                "style": "{",
+            },
+        },
+        "handlers": {
+            "file": {
+                "level": "DEBUG",
+                "class": "logging.handlers.RotatingFileHandler",
+                "filename": "django.log",
+                "maxBytes": 5 * 1024 * 1024,  # 5 MB
+                "backupCount": 3,  # keep 3 old log files
+            },
+        },
+        "loggers": {
+            "django": {
+                "handlers": ["file"],
+                "level": "DEBUG",
+                "propagate": True,
+            },
+        },
+    }
 
 DATABASES = {
     "default": {
@@ -204,8 +211,8 @@ CSRF_TRUSTED_ORIGINS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-LOGIN_URL = 'two_factor:login'
-LOGIN_REDIRECT_URL = 'two_factor:profile'
+LOGIN_URL = "two_factor:login"
+LOGIN_REDIRECT_URL = "two_factor:profile"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
