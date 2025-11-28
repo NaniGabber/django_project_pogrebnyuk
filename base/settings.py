@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     "django_otp.plugins.otp_email",
     "two_factor",
     "two_factor.plugins.email",
+    "oauth",
 ]
 
 
@@ -193,7 +194,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "oauth.gmail_api.GmailOAuth2Backend"
 EMAIL_HOST = os.getenv("EMAIL_HOST")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True"
